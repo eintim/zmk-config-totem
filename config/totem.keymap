@@ -46,6 +46,75 @@
         };
     };
 
+    behaviors {
+        mt_left: mt_left {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MT_LEFT";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <400>;
+            quick-tap-ms = <170>;
+            require-prior-idle-ms = <50>;
+            flavor = "balanced";
+            hold-trigger-key-positions = <32 33 34 35 36 37 26 15 5 6 16 27 28 17 7 8 18 29 19 30 9 31>;
+            hold-trigger-on-release;
+        };
+
+        mt_right: mt_right {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MT_RIGHT";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <400>;
+            quick-tap-ms = <170>;
+            require-prior-idle-ms = <50>;
+            flavor = "balanced";
+            hold-trigger-key-positions = <37 36 35 33 32 34 25 14 4 3 13 24 23 12 2 1 11 22 21 10 0 20>;
+            hold-trigger-on-release;
+        };
+
+        mt_shift_left: mt_shift_left {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MT_SHIFT_LEFT";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <175>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <20>;
+            flavor = "tap-preferred";
+            hold-trigger-key-positions = <32 34 33 35 36 37 26 15 5 6 16 27 28 17 7 8 18 29 9 19 30 31>;
+        };
+
+        mt_shift_right: mt_shift_right {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MT_SHIFT_RIGHT";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <175>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <20>;
+            flavor = "tap-preferred";
+            hold-trigger-key-positions = <32 34 33 35 36 37 10 21 20 0 22 11 1 2 12 24 23 13 3 4 25 14>;
+        };
+
+        mt_all: mt_all {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MT_ALL";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <175>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <35>;
+            flavor = "balanced";
+            hold-trigger-on-release;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -68,10 +137,10 @@
             //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 
             bindings = <
-               &kp Q  &kp W       &kp E               &kp R        &kp T        &kp Y    &kp U        &kp I                &kp O       &kp P
-               &kp A  &mt LALT S  &mt LEFT_COMMAND D  &mt LSHFT F  &kp G        &kp H    &mt RSHFT J  &mt RIGHT_COMMAND K  &mt RALT L  &kp SEMICOLON
-&mt LCTRL ESC  &kp Z  &kp X       &kp C               &kp V        &kp B        &kp N    &kp M        &kp COMMA            &kp DOT     &kp FSLH       &mt RCTRL BACKSLASH
-                                  &kp DEL             &lt NAV TAB  &kp SPACE    &kp RET  &lt SYM ESC  &kp BSPC
+                   &kp Q  &kp W                  &kp E                    &kp R                   &kp T        &kp Y    &kp U                    &kp I                      &kp O                   &kp P
+                   &kp A  &mt_shift_left LALT S  &mt_left LEFT_COMMAND D  &mt_shift_left LSHFT F  &kp G        &kp H    &mt_shift_right RSHFT J  &mt_right RIGHT_COMMAND K  &mt_shift_right RALT L  &kp SEMICOLON
+&mt_all LCTRL ESC  &kp Z  &kp X                  &kp C                    &kp V                   &kp B        &kp N    &kp M                    &kp COMMA                  &kp DOT                 &kp FSLH       &mt_all RCTRL BACKSLASH
+                                                 &kp DEL                  &lt NAV TAB             &kp SPACE    &kp RET  &lt SYM ESC              &kp BSPC
             >;
         };
 
