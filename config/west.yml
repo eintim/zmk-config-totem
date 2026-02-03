@@ -2,10 +2,16 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+    - name: eintim
+      url-base: https://github.com/eintim
   projects:
     - name: zmk
       remote: zmkfirmware
       revision: main
       import: app/west.yml
+
+    - name: zmk-behavior-battery-typer
+      remote: eintim
+      revision: main
   self:
     path: config
